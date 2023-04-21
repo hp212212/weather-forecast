@@ -1,0 +1,7 @@
+.mainContainer{
+    max-width: 600px;
+    padding: 2rem 0;
+    width: 92vw;
+    background: var(--poster);
+    margin: 0 auto;
+}
