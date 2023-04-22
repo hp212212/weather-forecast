@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import Search from './Search'
+import Temp_Item from './Temp_Item'
 import '../css/Main.css'
 // import { MyLocation } from './MyLocation'
 import { DispatchLatLng } from '../Redux/Dispatch'
@@ -47,10 +48,15 @@ export default function Main() {
 
     return (
         <>
-            <div className='mainContainer'>
+            <div className='mainContainer' style={{height:'70px'}}>
                 {/* <MyLocation /> */}
                 <Search />
+            </div>
+            <div className='mainContainer' style={{height:'290px'}}>
                 <TodayTemp />
+            </div>
+            <div className='mainContainer'>
+                <Temp_Item />
             </div>
         </>
     )

@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useEffect, useState } from 'react'
 // import { useSelector } from 'react-redux'
 import { Coordinates } from './Context'
 import { BiDownArrowAlt, BiUpArrowAlt, BiWind } from 'react-icons/bi'
-import { FaTemperatureHigh } from 'react-icons/fa'
+import { FaTemperatureHigh, FaCloud,FaCompressArrowsAlt } from 'react-icons/fa'
 import { WiHumidity } from 'react-icons/wi'
 import '../css/TodayTemp.css'
 
@@ -117,6 +117,10 @@ export default function TodayTemp() {
                 <div className='TempMain-Container'>
                     <div className='TempMain-Container-Left'>
                         <h1>23<span>°</span></h1>
+                        <div className='Detail-item'>
+                            <FaTemperatureHigh className='Detail-icon' />
+                            <p className='tempclick'>Real Feel: 28°</p>
+                        </div>
                         <div className='HighLow'>
                             <div className='HighLow-Left'>
                                 <BiUpArrowAlt className='UpIcon' />
@@ -129,12 +133,23 @@ export default function TodayTemp() {
                         </div>
                     </div>
                     <div className='TempMain-Container-Right'>
-                        <img alt="icon" src={`https://openweathermap.org/img/w/10n.png`} width="100" height="100" />
                         <p>Clear Sky</p>
-                        <div className='Detail'>
-                            <p><FaTemperatureHigh />Real Feel: 28°</p>
-                            <p><WiHumidity />Humidity: 68%</p>
-                            <p><BiWind />Wind: 0 km/h</p>
+                        <img alt="icon" src={`https://openweathermap.org/img/w/10n.png`} width="60" height="60" />
+                        <div className='Detail-item'>
+                            <FaCloud className='Detail-icon' />
+                            <p>Clouds: 75%</p>
+                        </div>
+                        <div className='Detail-item'>
+                            <WiHumidity className='Detail-icon' />
+                            <p>Humidity: 68%</p>
+                        </div>
+                        <div className='Detail-item'>
+                            <BiWind className='Detail-icon' />
+                            <p>Wind: 0 km/h</p>
+                        </div>
+                        <div className='Detail-item'>
+                            <FaCompressArrowsAlt className='Detail-icon' />
+                            <p>Pressure: 1030 hPa</p>
                         </div>
                     </div>
                 </div>

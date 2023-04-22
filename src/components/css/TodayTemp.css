@@ -12,7 +12,7 @@
     font-size: 1.5rem;
     color: var(--textcolor);
     text-align: center;
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     letter-spacing: 1px;
 }
 
@@ -31,6 +31,7 @@
     justify-content: center;
     min-width: 330px;
     width: 70%;
+    margin-top: 2rem;
 }
 
 .TempMain-Container .TempMain-Container-Left {
@@ -43,11 +44,11 @@
 }
 
 .TempMain-Container-Left>h1 {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
     font-weight: 600;
     color: var(--textcolor);
-    margin: 0;
-    margin-top: 2rem;
+    /* margin: 0; */
+    margin: 1rem 0;
     font-family: 'Varela Round', sans-serif;
     cursor: pointer;
 }
@@ -110,4 +111,37 @@
     justify-content: space-between;
     align-items: center;
     margin-left: 1.5rem;
+}
+
+.TempMain-Container-Right>p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--textcolor);
+    margin: 0;
+}
+
+.Detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.Detail-item .Detail-icon {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--textcolor);
+    margin: 0;
+    margin-right: 0.5rem;
+}
+
+.Detail-item>p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--textcolor);
+    margin: 0;
+}
+
+.tempclick {
+    cursor: pointer;
 }

@@ -84,7 +84,7 @@
 }
 
 ::placeholder {
-    color: var(--textcolor);
+    color: black;
     font-size: 1.8rem;
     vertical-align: middle;
     opacity: 0.5;
