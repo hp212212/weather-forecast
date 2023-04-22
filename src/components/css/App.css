@@ -30,7 +30,7 @@ body {
 .above35 {
     --background: linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(183, 191, 236, 1) 0%, rgba(255, 106, 106, 1) 100%);
     --poster: #fb1e1e;
-    --textcolor: #2430dd;
+    --textcolor: #fff;
     background: var(--background);
     /* max-width: 1200px; */
     width: 100vw;

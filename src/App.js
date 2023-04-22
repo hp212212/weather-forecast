@@ -6,6 +6,9 @@ import I18NextComp from './components/js/I18NextComp';
 import { BackgroungChange, Coordinates } from './components/js/Context'
 import './components/css/App.css'
 import Main from './components/js/Main';
+import { Provider } from 'react-redux';
+import { store } from './components/Redux/Store';
+import { MyLocation } from './components/js/MyLocation';
 
 
 function App() {
@@ -39,7 +42,6 @@ function App() {
   //     navigator.geolocation.getCurrentPosition(success, error);
   //   }
   // }
-
   return (
     <>
       {/* <h2>Title : {t('app_title')}</h2>
@@ -61,13 +63,15 @@ function App() {
       {/* <I18NextComp /> */}
       <div className={backgroundClass}>
         <h1 className='TitleName'>weather forecast</h1>
-        <BackgroungChange.Provider value={{ backgroundClass, setbackgroundClass }}>
-          <Coordinates.Provider value={{ Longitude, setLongitude, Latitude, setLatitude }}>
-            <Routes>
-              <Route path="/" element={<Main />} />
-            </Routes>
-          </Coordinates.Provider>
-        </BackgroungChange.Provider>
+        <Provider store={store}>
+          <BackgroungChange.Provider value={{ backgroundClass, setbackgroundClass }}>
+            <Coordinates.Provider value={{ Longitude, setLongitude, Latitude, setLatitude }}>
+              <Routes>
+                <Route path="/" element={<Main />} />
+              </Routes>
+            </Coordinates.Provider>
+          </BackgroungChange.Provider>
+        </Provider>
       </div>
       {/* <Demo /> */}
 
