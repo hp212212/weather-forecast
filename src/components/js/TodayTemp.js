@@ -2,52 +2,34 @@ import React, { useCallback, useContext, useEffect, useState } from 'react'
 // import { useSelector } from 'react-redux'
 import { Coordinates } from './Context'
 import { BiDownArrowAlt, BiUpArrowAlt, BiWind } from 'react-icons/bi'
-import { FaTemperatureHigh, FaCloud,FaCompressArrowsAlt } from 'react-icons/fa'
+import { FaTemperatureHigh, FaCloud, FaCompressArrowsAlt } from 'react-icons/fa'
 import { WiHumidity } from 'react-icons/wi'
 import '../css/TodayTemp.css'
+import dayjs from 'dayjs'
+import TempItem from './TempItem'
 
 export default function TodayTemp() {
-    const { Latitude, setLatitude, Longitude, setLongitude } = useContext(Coordinates)
+    const { Latitude, Longitude, CityName, CF, setCF } = useContext(Coordinates)
     const [DateFormat, setDateFormat] = useState('--')
+    const [MainDataC, setMainDataC] = useState({})
+    const [MainDataF, setMainDataF] = useState({})
     const [MainData, setMainData] = useState({})
-    const [ForecastData, setForecastData] = useState({})
-    // const state = useSelector((state) => state.LatLngLanguage)
-    // const LatLng = [state.Lat, state.Lng]
-    // $.ajax({
-    //     url: `https://api.openweathermap.org/data/2.5/weather?q=${Search}&appid=082b1ef5e5ccdcd2dd8368f7087b34b1&units=metric`,
-    //     type: "Get",
-    //     dataType: "jsonp",
-    //     success: (data) => {
-    //         setDataMainC(data)
-    //         if (CF === '°C') {
-    //             setDataMain(data)
-    //         }
-    //     },
-    //     error: (err) => { }
-    // });
-    // $.ajax({
-    //     url: `https://api.openweathermap.org/data/2.5/forecast?q=${Search}&appid=082b1ef5e5ccdcd2dd8368f7087b34b1&units=metric`,
-    //     type: "Get",
-    //     dataType: "jsonp",
-    //     success: (data) => {
-    //         setDataC(data)
-    //         if (CF === '°C') {
-    //             setData(data)
-    //         }
-    //         setTodayWeather([weekday[new Date(data.list[0].dt_txt).getDay()], dayjs(data.list[0].dt_txt).format('h a'), data.list[0].weather[0].description])
-    //     },
-    //     error: (err) => { }
-    // });
+    const [ForecastDataC, setForecastDataC] = useState([])
+    const [ForecastDataF, setForecastDataF] = useState([])
+    const [ForecastData, setForecastData] = useState([])
+    const [Loading, setLoading] = useState(true)
 
     const GetWeather = async () => {
         try {
+            setLoading(true)
             const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${Latitude}&lon=${Longitude}&appid=082b1ef5e5ccdcd2dd8368f7087b34b1&units=metric`)
             const data = await response.json()
-            setMainData(data)
+            setMainDataC(data)
+            if (CF === 'C') {
+                setMainData(data)
+            }
             // timeConverter(data.dt)
-            console.log(data)
             setDateFormat(timeConverter(data.dt))
-            // console.log(timeConverter(data.dt))
             // .toLocaleDateString() or.toLocaleTimeString())
         }
         catch (err) {
@@ -55,10 +37,55 @@ export default function TodayTemp() {
         }
 
         try {
+            setLoading(true)
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${Latitude}&lon=${Longitude}&appid=082b1ef5e5ccdcd2dd8368f7087b34b1&units=imperial`)
+            const data = await response.json()
+            setMainDataF(data)
+            if (CF === 'F') {
+                setMainData(data)
+            }
+            // timeConverter(data.dt)
+            // .toLocaleDateString() or.toLocaleTimeString())
+        }
+        catch (err) {
+            console.log(err)
+        }
+
+        try {
+            setLoading(true)
             const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${Latitude}&lon=${Longitude}&appid=082b1ef5e5ccdcd2dd8368f7087b34b1&units=metric`)
             const data = await response.json()
-            setForecastData(data)
-            // console.log(data)
+            console.log(data)
+            for (let i = 0; i < data.list.length; i++) {
+                if (dayjs().add(1, 'day').format('YYYY-MM-DD') === dayjs(data.list[i].dt_txt).format('YYYY-MM-DD')) {
+                    setForecastDataC([data.list[i], data.list[i + 8], data.list[i + 16], data.list[i + 24], data.list[i + 32]])
+                    if (CF === 'C') {
+                        setForecastData([data.list[i], data.list[i + 8], data.list[i + 16], data.list[i + 24], data.list[i + 32]])
+                    }
+                    break
+                }
+            }
+            setLoading(false)
+        }
+        catch (err) {
+            console.log(err)
+        }
+
+        try {
+            setLoading(true)
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${Latitude}&lon=${Longitude}&appid=082b1ef5e5ccdcd2dd8368f7087b34b1&units=imperial`)
+            const data = await response.json()
+            console.log(data)
+            for (let i = 0; i < data.list.length; i++) {
+                if (dayjs().add(1, 'day').format('YYYY-MM-DD') === dayjs(data.list[i].dt_txt).format('YYYY-MM-DD')) {
+                    setForecastDataF([data.list[i], data.list[i + 8], data.list[i + 16], data.list[i + 24], data.list[i + 32]])
+                    if (CF === 'F') {
+                        setForecastData([data.list[i], data.list[i + 8], data.list[i + 16], data.list[i + 24], data.list[i + 32]])
+                    }
+                    break
+                }
+            }
+            setLoading(false)
         }
         catch (err) {
             console.log(err)
@@ -78,12 +105,25 @@ export default function TodayTemp() {
         // var sec = a.getSeconds();
         // var time = date + ' ' + month + ' ' + year + ' ; ' + hour + ':' + min + ':' + sec;
         var time = Days[day] + ' ' + date + ' ' + month + ' ' + year + ' | ' + a.toLocaleTimeString();
-        console.log(time)
         return time;
     }
+    const TempChange = () => {
+        if (CF === 'C') {
+            setMainData(MainDataF)
+            setForecastData(ForecastDataF)
+            setCF('F')
+        } else {
+            setMainData(MainDataC)
+            setForecastData(ForecastDataC)
+            setCF('C')
+        }
+    }
+
+
     useEffect(() => {
-        console.log('GetWeather')
-        GetWeather()
+        if (Latitude !== '') {
+            GetWeather()
+        }
     }, [Latitude])
 
     // useCallback(
@@ -100,7 +140,6 @@ export default function TodayTemp() {
     //         // var sec = a.getSeconds();
     //         // var time = date + ' ' + month + ' ' + year + ' ; ' + hour + ':' + min + ':' + sec;
     //         var time = Days[day] + ' ' + date + ' ' + month + ' ' + year + ' ; ' + a.toLocaleTimeString();
-    //         console.log(time)
     //         return time;
     //     },
     //     [DateCode],
@@ -110,51 +149,124 @@ export default function TodayTemp() {
 
     return (
         <>
-            <div className='TempMain'>
-                <p>Friday 21 Apr 2023 | 08:08:08 pm</p>
-                {/* <p>{DateFormat}</p> */}
-                <h1>Parish, <span>FR</span></h1>
-                <div className='TempMain-Container'>
-                    <div className='TempMain-Container-Left'>
-                        <h1>23<span>°</span></h1>
-                        <div className='Detail-item'>
-                            <FaTemperatureHigh className='Detail-icon' />
-                            <p className='tempclick'>Real Feel: 28°</p>
-                        </div>
-                        <div className='HighLow'>
-                            <div className='HighLow-Left'>
-                                <BiUpArrowAlt className='UpIcon' />
-                                <p>High: 25°</p>
+            <div className='mainContainer' style={{ height: '290px' }}>
+                <div className='TempMain'>
+                    <p>{
+                        !Loading ? DateFormat : '--'}</p>
+                    {/* <p>{DateFormat}</p> */}
+                    <h1>{CityName}</h1>
+                    <div className='TempMain-Container'>
+                        <div className='TempMain-Container-Left'>
+                            <h1 onClick={TempChange}>{!Loading ? MainData.main.temp.toFixed(0) : null}° <span>{CF}</span></h1>
+                            <div className='Detail-item'>
+                                <FaTemperatureHigh className='Detail-icon' />
+                                <p className='tempclick' onClick={TempChange}>Real Feel: {!Loading ? MainData.main.feels_like : null} °</p>
                             </div>
-                            <div className='HighLow-Right'>
-                                <BiDownArrowAlt className='DownIcon' />
-                                <p>High: 25°</p>
+                            <div className='HighLow'>
+                                <div className='HighLow-Left'>
+                                    <BiUpArrowAlt className='UpIcon' />
+                                    <p onClick={TempChange}>High: {!Loading ? MainData.main.temp_max : null} °</p>
+                                </div>
+                                <div className='HighLow-Right'>
+                                    <BiDownArrowAlt className='DownIcon' />
+                                    <p onClick={TempChange}>Low: {!Loading ? MainData.main.temp_min : null} °</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='TempMain-Container-Right'>
+                            <p>{!Loading ? MainData.weather[0].main : null}</p>
+                            <img alt="icon" src={`https://openweathermap.org/img/w/${!Loading ? MainData.weather[0].icon : null}.png`} width="60" height="60" />
+                            <div className='Detail-item'>
+                                <FaCloud className='Detail-icon' />
+                                <p>Clouds: {!Loading ? MainData.clouds.all : null} %</p>
+                            </div>
+                            <div className='Detail-item'>
+                                <WiHumidity className='Detail-icon' />
+                                <p>Humidity: {!Loading ? MainData.main.humidity : null} %</p>
+                            </div>
+                            <div className='Detail-item'>
+                                <BiWind className='Detail-icon' />
+                                <p>Wind: {!Loading ? MainData.wind.speed : null} {CF === 'C' ? 'm/s' : 'miles/h'}</p>
+                            </div>
+                            <div className='Detail-item'>
+                                <FaCompressArrowsAlt className='Detail-icon' />
+                                <p>Pressure: {!Loading ? MainData.main.pressure : null} hPa</p>
                             </div>
                         </div>
                     </div>
-                    <div className='TempMain-Container-Right'>
-                        <p>Clear Sky</p>
-                        <img alt="icon" src={`https://openweathermap.org/img/w/10n.png`} width="60" height="60" />
-                        <div className='Detail-item'>
-                            <FaCloud className='Detail-icon' />
-                            <p>Clouds: 75%</p>
-                        </div>
-                        <div className='Detail-item'>
-                            <WiHumidity className='Detail-icon' />
-                            <p>Humidity: 68%</p>
-                        </div>
-                        <div className='Detail-item'>
-                            <BiWind className='Detail-icon' />
-                            <p>Wind: 0 km/h</p>
-                        </div>
-                        <div className='Detail-item'>
-                            <FaCompressArrowsAlt className='Detail-icon' />
-                            <p>Pressure: 1030 hPa</p>
-                        </div>
-                    </div>
-                </div>
 
+                </div>
             </div>
+
+
+            {/* {
+                !Loading ?
+                    (
+                        <><div className='mainContainer' style={{ height: '141px' }}>
+                            <TempItem data={ForecastData[0]} TempChange={TempChange} />
+                        </div>
+                            <div className='mainContainer' style={{ height: '141px' }}>
+                                <TempItem data={ForecastData[1]} TempChange={TempChange} />
+                            </div>
+                            <div className='mainContainer' style={{ height: '141px' }}>
+                                <TempItem data={ForecastData[2]} TempChange={TempChange} />
+                            </div>
+                            <div className='mainContainer' style={{ height: '141px' }}>
+                                <TempItem data={ForecastData[3]} TempChange={TempChange} />
+                            </div>
+                            <div className='mainContainer' style={{ height: '141px' }}>
+                                <TempItem data={ForecastData[4]} TempChange={TempChange} />
+                            </div>
+                        </>)
+                    : null
+            } */}
+
+            <div className='mainContainer' style={{ height: '141px' }}>
+                {
+                    !Loading ?
+                        (
+                            <TempItem data={ForecastData[0]} TempChange={TempChange} />
+                        )
+                        : null
+                }
+            </div>
+            <div className='mainContainer' style={{ height: '141px' }}>
+                {
+                    !Loading ?
+                        (
+                            <TempItem data={ForecastData[1]} TempChange={TempChange} />
+                        )
+                        : null
+                }
+            </div>
+            <div className='mainContainer' style={{ height: '141px' }}>
+                {
+                    !Loading ?
+                        (
+                            <TempItem data={ForecastData[2]} TempChange={TempChange} />
+                        )
+                        : null
+                }
+            </div>
+            <div className='mainContainer' style={{ height: '141px' }}>
+                {
+                    !Loading ?
+                        (
+                            <TempItem data={ForecastData[3]} TempChange={TempChange} />
+                        )
+                        : null
+                }
+            </div>
+            <div className='mainContainer' style={{ height: '141px' }}>
+                {
+                    !Loading ?
+                        (
+                            <TempItem data={ForecastData[4]} TempChange={TempChange} />
+                        )
+                        : null
+                }
+            </div>
+
         </>
     )
 }

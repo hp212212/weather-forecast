@@ -40,7 +40,7 @@
     font-size: 1.8rem;
     border-radius: 5px;
     letter-spacing: 1px;
-    color: var(--textcolor);
+    color: var(--background);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -66,7 +66,7 @@
     font-weight: 500;
     border-radius: 5px;
     letter-spacing: 1px;
-    color: var(--textcolor);
+    color: var(--background);
     background: #fff;
     margin-top: 2px ;
     height: 100%;

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react'
 import Search from './Search'
-import Temp_Item from './Temp_Item'
+import TempItem from './TempItem'
 import '../css/Main.css'
 // import { MyLocation } from './MyLocation'
-import { DispatchLatLng } from '../Redux/Dispatch'
-import { useDispatch } from 'react-redux'
+// import { DispatchLatLng } from '../Redux/Dispatch'
+// import { useDispatch } from 'react-redux'
 import TodayTemp from './TodayTemp'
 import { Coordinates } from './Context'
 
@@ -12,7 +12,7 @@ import { Coordinates } from './Context'
 // MyLocation()
 export default function Main() {
     // const dispatch = useDispatch()
-    const { Latitude, setLatitude, Longitude, setLongitude } = useContext(Coordinates)
+    const { Latitude, setLatitude, Longitude, setLongitude, setCityName } = useContext(Coordinates)
 
     const Geolocation = () => {
         if (!navigator.geolocation) {
@@ -21,11 +21,20 @@ export default function Main() {
             // setLo("Locating…")
             navigator.geolocation.getCurrentPosition(success, error);
         }
-        function success(position) {
+        async function success(position) {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
             setLatitude(latitude)
             setLongitude(longitude)
+            try {
+                const response = await fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=082b1ef5e5ccdcd2dd8368f7087b34b1`)
+                const data = await response.json()
+                setCityName(`${data[0].name}, ${data[0].state}, ${data[0].country}`)
+
+            }
+            catch (error) {
+                console.log(error)
+            }
             // dispatch(
             //     DispatchLatLng(latitude, longitude)
             // )
@@ -36,6 +45,7 @@ export default function Main() {
         function error() {
             setLatitude('43.6537')
             setLongitude('-79.3827')
+            setCityName(`Toronto, Ontario, CA`)
             // dispatch(
             //     DispatchLatLng('43.6537', '-79.3827')
             // )
@@ -48,16 +58,11 @@ export default function Main() {
 
     return (
         <>
-            <div className='mainContainer' style={{height:'70px'}}>
+            <div className='mainContainer' style={{ height: '50px' }}>
                 {/* <MyLocation /> */}
                 <Search />
             </div>
-            <div className='mainContainer' style={{height:'290px'}}>
-                <TodayTemp />
-            </div>
-            <div className='mainContainer'>
-                <Temp_Item />
-            </div>
+            <TodayTemp />
         </>
     )
 }

@@ -3,17 +3,17 @@ import { GoLocation } from 'react-icons/go'
 import { NavLink } from 'react-router-dom'
 import { Coordinates } from './Context'
 import '../css/Search.css'
-import { useSelector, useDispatch } from 'react-redux'
-import { DispatchLatLng } from '../Redux/Dispatch'
+// import { useSelector, useDispatch } from 'react-redux'
+// import { DispatchLatLng } from '../Redux/Dispatch'
 
 export default function Search() {
-    const state = useSelector((state) => state.LatLngLanguage)
-    const dispatch = useDispatch()
+    // const state = useSelector((state) => state.LatLngLanguage)
+    // const dispatch = useDispatch()
     const [InputCity, setInputCity] = useState('')
     const [Data, setData] = useState([])
     const [placeholder, setPlaceholder] = useState('Enter City Name...')
     let [ScaleUl, setScaleUl] = useState('scaleY(1)')
-    const { Latitude, setLatitude, Longitude, setLongitude } = useContext(Coordinates)
+    const { Latitude, setLatitude, Longitude, setLongitude, setCityName } = useContext(Coordinates)
     const Search = async () => {
         try {
             const response = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${InputCity.length > 2 ? InputCity : ''}&key=b257c0dae6134b9683a9d59a1a1bcb8c&limit=7&language=en&debounce=250`);
@@ -28,6 +28,7 @@ export default function Search() {
     const Check = (e) => {
         if (e.key === 'Tab' || e.key === 'Enter') {
             setPlaceholder(Data[0].formatted)
+            setCityName(Data[0].formatted)
             // setLongitude(Data[0].geometry.lng)
             // dispatch(DispatchLatLng(Data[0].geometry.lat, Data[0].geometry.lng))
             setLongitude(Data[0].geometry.lng)
@@ -39,7 +40,7 @@ export default function Search() {
 
     const Display = (item) => {
         setPlaceholder(item.formatted)
-        console.log(item)
+        setCityName(item.formatted)
         // dispatch(DispatchLatLng(item.geometry.lat, item.geometry.lng))
         setLongitude(item.geometry.lng)
         setLatitude(item.geometry.lat)
