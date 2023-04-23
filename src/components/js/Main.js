@@ -28,7 +28,7 @@ export default function Main() {
             setLongitude(longitude)
             setNoLocation(false)
             try {
-                const response = await fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=082b1ef5e5ccdcd2dd8368f7087b34b1`)
+                const response = await fetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=082b1ef5e5ccdcd2dd8368f7087b34b1`)
                 const data = await response.json()
                 setCityName(`${data[0].name}, ${data[0].state}, ${data[0].country}`)
 
