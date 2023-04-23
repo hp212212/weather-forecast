@@ -1,6 +1,14 @@
-  {
-  "app_title": "મથાળું",
-  "language": "ગુજરાતી",
-  "welcome_message": "કેમ છો મજામાં ?",
-  "days_since_release": "આ વિડિયો પ્રશરીત થવા માં {{number_of_days}} દિવસ થયા છે."
+{
+  "Title": "વાતાવરણ માહિતી",
+  "Header": "વાતાવરણ માહિતી",
+  "Placeholder": "સ્થળનું નામ લખો...",
+  "Real_Feel": "અનુભવાય",
+  "High": "મહત્તમ:",
+  "Low": "ન્યૂનતમ:",
+  "Clouds": "વાદળો:",
+  "Humidity": "ભેજ:",
+  "Wind": "પવન:",
+  "Pressure": "દબાણ:",
+  "Outlook": "Outlook",
+  "days_since_release": "it's been {{number_of_days}} days since this video was released"
 }

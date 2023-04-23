@@ -1,0 +1,36 @@
+.i18Main {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+.i18Main__header {
+    position: relative;
+}
+
+.i18Main__header .i18Main-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--textcolor);
+    cursor: pointer;
+}
+
+.i18Main__header ul {
+    position: absolute;
+    top: 100%;
+    right: 10%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    /* transform: scaleY(0); */
+}
+
+.i18Main__header ul li{
+    display: inline-block;
+    padding-bottom: 0.3rem;
+    margin: 0;
+    list-style-type: none;
+    width: 100%;
+    text-align: right;
+    cursor: pointer;
+}

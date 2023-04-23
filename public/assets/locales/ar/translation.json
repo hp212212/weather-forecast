@@ -1,6 +1,14 @@
 {
-  "app_title": "عنوان",
-  "language": "اللغة",
-  "welcome_message": "اهلا بكم",
-  "days_since_release": "لقد مرت {{number_of_days}} أيام على إصدار هذا الفيديو"
+  "Title": "النشرة الجوية",
+  "Header": "النشرة الجوية",
+  "Placeholder": "أدخل اسم المدينة...",
+  "Real_Feel": "شعور حقيقي",
+  "High": "عالي:",
+  "Low": "قليل:",
+  "Clouds": "سحاب:",
+  "Humidity": "رطوبة:",
+  "Wind": "رياح:",
+  "Pressure": "ضغط:",
+  "Outlook": "Outlook",
+  "days_since_release": "it's been {{number_of_days}} days since this video was released"
 }

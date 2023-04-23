@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import Search from './Search'
-import TempItem from './TempItem'
+// import TempItem from './TempItem'
 import '../css/Main.css'
 // import { MyLocation } from './MyLocation'
 // import { DispatchLatLng } from '../Redux/Dispatch'
@@ -12,7 +12,7 @@ import { Coordinates } from './Context'
 // MyLocation()
 export default function Main() {
     // const dispatch = useDispatch()
-    const { Latitude, setLatitude, Longitude, setLongitude, setCityName } = useContext(Coordinates)
+    const { setNoLocation, setLatitude, setLongitude, setCityName } = useContext(Coordinates)
 
     const Geolocation = () => {
         if (!navigator.geolocation) {
@@ -26,6 +26,7 @@ export default function Main() {
             const longitude = position.coords.longitude;
             setLatitude(latitude)
             setLongitude(longitude)
+            setNoLocation(false)
             try {
                 const response = await fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=082b1ef5e5ccdcd2dd8368f7087b34b1`)
                 const data = await response.json()
@@ -43,6 +44,7 @@ export default function Main() {
             // setLiveText(`Latitude: ${latitude} °, Longitude: ${longitude} °`);
         }
         function error() {
+            setNoLocation(true)
             setLatitude('43.6537')
             setLongitude('-79.3827')
             setCityName(`Toronto, Ontario, CA`)
@@ -54,6 +56,7 @@ export default function Main() {
 
     useEffect(() => {
         Geolocation()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

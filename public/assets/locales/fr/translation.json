@@ -1,6 +1,14 @@
 {
-  "app_title": "Titre",
-  "language": "Langue",
-  "welcome_message": "Bienvenue",
-  "days_since_release": "ça fait {{number_of_days}} jours depuis la sortie de cette vidéo"
+  "Title": "Prévisions météorologiques",
+  "Header": "Prévisions météorologiques",
+  "Placeholder": "Entrez le nom de la ville...",
+  "Real_Feel": "Vraie sensation",
+  "High": "Haut:",
+  "Low": "Faible:",
+  "Clouds": "Des nuages:",
+  "Humidity": "Humidité:",
+  "Wind": "Vent:",
+  "Pressure": "Pression:",
+  "Outlook": "Perspectives",
+  "days_since_release": "it's been {{number_of_days}} days since this video was released"
 }

@@ -3,15 +3,18 @@ import { GoLocation } from 'react-icons/go'
 import { NavLink } from 'react-router-dom'
 import { Coordinates } from './Context'
 import '../css/Search.css'
+import { useTranslation } from 'react-i18next'
 // import { useSelector, useDispatch } from 'react-redux'
 // import { DispatchLatLng } from '../Redux/Dispatch'
 
 export default function Search() {
+    const { t } = useTranslation();
     // const state = useSelector((state) => state.LatLngLanguage)
     // const dispatch = useDispatch()
+    let kaka = t('Placeholder')
     const [InputCity, setInputCity] = useState('')
     const [Data, setData] = useState([])
-    const [placeholder, setPlaceholder] = useState('Enter City Name...')
+    const [placeholder, setPlaceholder] = useState()
     let [ScaleUl, setScaleUl] = useState('scaleY(1)')
     const { Latitude, setLatitude, Longitude, setLongitude, setCityName } = useContext(Coordinates)
     const Search = async () => {
@@ -55,6 +58,7 @@ export default function Search() {
             setData([])
             setScaleUl('scaleY(0)')
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [InputCity])
     return (
         <>
@@ -67,7 +71,7 @@ export default function Search() {
                             setInputCity(event.target.value);
                         }}
                         onKeyDown={Check}
-                        placeholder={placeholder}
+                        placeholder={placeholder ? placeholder : kaka}
                     // value="hhh" 
                     />
                     {/* <select style={{ transform: { ScaleUl } }}>

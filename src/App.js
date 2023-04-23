@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
-import Demo from './components/Demo';
+// import Demo from './components/Demo';
 import I18NextComp from './components/js/I18NextComp';
-import { BackgroungChange, Coordinates } from './components/js/Context'
+import { Coordinates } from './components/js/Context'
 import './components/css/App.css'
 import Main from './components/js/Main';
-import { Provider } from 'react-redux';
+// import { Provider } from 'react-redux';
 // import { store } from './components/Redux/Store';
-import { MyLocation } from './components/js/MyLocation';
+// import { MyLocation } from './components/js/MyLocation';
 
 
 function App() {
-  const [backgroundClass, setbackgroundClass] = useState('below15')
+  const { t } = useTranslation()
+  const [backgroundClass, setbackgroundClass] = useState('nolocation')
+  const [NoLocation, setNoLocation] = useState('true')
   const [Longitude, setLongitude] = useState('')
   const [Latitude, setLatitude] = useState('')
   const [CityName, setCityName] = useState('--')
@@ -62,17 +64,17 @@ function App() {
             </button>)
         })
       } */}
-      {/* <I18NextComp /> */}
+      <I18NextComp />
       <div className={backgroundClass}>
-        <h1 className='TitleName'>weather forecast</h1>
+        <h1 className='TitleName'>{t('Header')}</h1>
         {/* <Provider store={store}> */}
-        <BackgroungChange.Provider value={{ backgroundClass, setbackgroundClass }}>
-          <Coordinates.Provider value={{ Longitude, setLongitude, Latitude, setLatitude, CityName, setCityName, CF, setCF }}>
-            <Routes>
-              <Route path="/" element={<Main />} />
-            </Routes>
-          </Coordinates.Provider>
-        </BackgroungChange.Provider>
+        {/* <BackgroungChange.Provider value={{ backgroundClass, setbackgroundClass }}> */}
+        <Coordinates.Provider value={{ NoLocation, setNoLocation, backgroundClass, setbackgroundClass, Longitude, setLongitude, Latitude, setLatitude, CityName, setCityName, CF, setCF }}>
+          <Routes>
+            <Route path="/" element={<Main />} />
+          </Routes>
+        </Coordinates.Provider>
+        {/* </BackgroungChange.Provider> */}
         {/* </Provider> */}
       </div>
       {/* <Demo /> */}

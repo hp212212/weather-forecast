@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react'
+import React, {  useContext, useEffect, useState } from 'react'
 // import { useSelector } from 'react-redux'
 import { Coordinates } from './Context'
 import { BiDownArrowAlt, BiUpArrowAlt, BiWind } from 'react-icons/bi'
@@ -7,9 +7,11 @@ import { WiHumidity } from 'react-icons/wi'
 import '../css/TodayTemp.css'
 import dayjs from 'dayjs'
 import TempItem from './TempItem'
+import { useTranslation } from 'react-i18next'
 
 export default function TodayTemp() {
-    const { Latitude, Longitude, CityName, CF, setCF } = useContext(Coordinates)
+    const { t } = useTranslation()
+    const { Latitude, Longitude, CityName, CF, setCF, setbackgroundClass, NoLocation } = useContext(Coordinates)
     const [DateFormat, setDateFormat] = useState('--')
     const [MainDataC, setMainDataC] = useState({})
     const [MainDataF, setMainDataF] = useState({})
@@ -27,6 +29,17 @@ export default function TodayTemp() {
             setMainDataC(data)
             if (CF === 'C') {
                 setMainData(data)
+            }
+            if (NoLocation) {
+                setbackgroundClass('nolocation')
+            } else {
+                if (data.main.temp < 15) {
+                    setbackgroundClass('below15')
+                } else if (data.main.temp > 35) {
+                    setbackgroundClass('above35')
+                } else {
+                    setbackgroundClass('between15to35')
+                }
             }
             // timeConverter(data.dt)
             setDateFormat(timeConverter(data.dt))
@@ -124,6 +137,7 @@ export default function TodayTemp() {
         if (Latitude !== '') {
             GetWeather()
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [Latitude])
 
     // useCallback(
@@ -160,37 +174,37 @@ export default function TodayTemp() {
                             <h1 onClick={TempChange}>{!Loading ? MainData.main.temp.toFixed(0) : null}° <span>{CF}</span></h1>
                             <div className='Detail-item'>
                                 <FaTemperatureHigh className='Detail-icon' />
-                                <p className='tempclick' onClick={TempChange}>Real Feel: {!Loading ? MainData.main.feels_like : null} °</p>
+                                <p className='tempclick' onClick={TempChange}>{`${t('Real_Feel')} ${!Loading ? MainData.main.feels_like : '--'}`} °</p>
                             </div>
                             <div className='HighLow'>
                                 <div className='HighLow-Left'>
                                     <BiUpArrowAlt className='UpIcon' />
-                                    <p onClick={TempChange}>High: {!Loading ? MainData.main.temp_max : null} °</p>
+                                    <p onClick={TempChange}>{`${t('High')} ${!Loading ? MainData.main.temp_max : '--'}`} °</p>
                                 </div>
                                 <div className='HighLow-Right'>
                                     <BiDownArrowAlt className='DownIcon' />
-                                    <p onClick={TempChange}>Low: {!Loading ? MainData.main.temp_min : null} °</p>
+                                    <p onClick={TempChange}>{`${t('Low')} ${!Loading ? MainData.main.temp_min : '--'}`} °</p>
                                 </div>
                             </div>
                         </div>
                         <div className='TempMain-Container-Right'>
-                            <p>{!Loading ? MainData.weather[0].main : null}</p>
-                            <img alt="icon" src={`https://openweathermap.org/img/w/${!Loading ? MainData.weather[0].icon : null}.png`} width="60" height="60" />
+                            <p>{!Loading ? MainData.weather[0].main : '--'}</p>
+                            <img alt="icon" src={`https://openweathermap.org/img/w/${!Loading ? MainData.weather[0].icon : '--'}.png`} width="60" height="60" />
                             <div className='Detail-item'>
                                 <FaCloud className='Detail-icon' />
-                                <p>Clouds: {!Loading ? MainData.clouds.all : null} %</p>
+                                <p>{`${t('Clouds')} ${!Loading ? MainData.clouds.all : '--'}`} %</p>
                             </div>
                             <div className='Detail-item'>
                                 <WiHumidity className='Detail-icon' />
-                                <p>Humidity: {!Loading ? MainData.main.humidity : null} %</p>
+                                <p>{`${t('Humidity')} ${!Loading ? MainData.main.humidity : '--'}`} %</p>
                             </div>
                             <div className='Detail-item'>
                                 <BiWind className='Detail-icon' />
-                                <p>Wind: {!Loading ? MainData.wind.speed : null} {CF === 'C' ? 'm/s' : 'miles/h'}</p>
+                                <p>{`${t('Wind')} ${!Loading ? MainData.wind.speed : '--'} ${CF === 'C' ? 'm/s' : 'miles/h'}`}</p>
                             </div>
                             <div className='Detail-item'>
                                 <FaCompressArrowsAlt className='Detail-icon' />
-                                <p>Pressure: {!Loading ? MainData.main.pressure : null} hPa</p>
+                                <p>{`${t('Pressure')} ${!Loading ? MainData.main.pressure : '--'}`} hPa</p>
                             </div>
                         </div>
                     </div>
