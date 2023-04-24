@@ -12,7 +12,6 @@
     font-size: 1.5rem;
     color: var(--textcolor);
     text-align: center;
-    /* margin-top: 2rem; */
     letter-spacing: 1px;
 }
 
@@ -27,6 +26,9 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     font-family: 'Varela Round', sans-serif;
+    border-bottom: #fff 1px solid;
+    border-bottom-width:initial;
+    line-height: 40px;
 }
 
 .TempMain .TempMain-Container {
@@ -51,7 +53,6 @@
     font-size: 4.5rem;
     font-weight: 600;
     color: var(--textcolor);
-    /* margin: 0; */
     margin: 1rem 0;
     font-family: 'Varela Round', sans-serif;
     cursor: pointer;
@@ -65,7 +66,7 @@
 }
 
 .HighLow .HighLow-Left {
-    margin-right: 0.5rem;
+    margin-right: 0.2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -87,7 +88,7 @@
 }
 
 .HighLow .HighLow-Right {
-    margin-left: 0.5rem;
+    margin-left: 0.2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;

@@ -1,8 +1,6 @@
 .SearchMain {
     width: 90%;
     max-width: 400px;
-    /* height: 100px; */
-    /* background:var(--textcolor); */
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -15,7 +13,6 @@
 }
 
 .LocationIcon {
-    /* border: 2px solid var(--textcolor); */
     background: var(--poster);
     width: 40px;
     height: 30px;

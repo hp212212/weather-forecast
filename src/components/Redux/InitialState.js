@@ -1,1 +1,0 @@
-export const defaultMainDate = { 'Lat': '43.6537', 'Lng': '-79.3827', 'Language': 'en' }

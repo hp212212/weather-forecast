@@ -11,9 +11,9 @@ import '../css/i18Next.css'
 import { Coordinates } from './Context';
 
 i18n
-    .use(initReactI18next) // passes i18n down to react-i18next
-    .use(LanguageDetector) // passes language detector down to react-i18next
-    .use(HttpApi) // passes http backend down to react-i18next
+    .use(initReactI18next)
+    .use(LanguageDetector)
+    .use(HttpApi)
     .init({
         supportedLngs: ['en', 'ar', 'fr', 'gu'],
         fallbackLng: "en",
@@ -24,7 +24,6 @@ i18n
         backend: {
             loadPath: 'assets/locales/{{lng}}/translation.json',
         },
-        // react: { useSuspense: false },n
     });
 const languages = [
     {
@@ -55,9 +54,6 @@ export default function I18NextComp() {
     const currentLanguageCode = Cookies.get('i18next') || 'en'
     const { t } = useTranslation();
     const { setLangCode } = useContext(Coordinates)
-    // const releaseDate = new Date('2020-03-07');
-    // const timeDifference = new Date() - releaseDate;
-    // const number_of_days = Math.floor(timeDifference / (1000 * 60 * 60 * 24))
 
     const SelectLng = (code) => {
         setLangCode(code)
@@ -77,7 +73,6 @@ export default function I18NextComp() {
             <div className='i18Main'>
                 <div className='i18Main__header'>
                     <MdLanguage className='i18Main-icon'
-                        // onClick={() => { close === 'scaleY(0)' ? setclose('scaleY(1)') : setclose('scaleY(0)') }}
                         onClick={
                             () => {
                                 if (close === true) {
@@ -98,19 +93,7 @@ export default function I18NextComp() {
                         }
                     </ul>
                 </div>
-
             </div>
-            {/* {
-                languages.map((res, index) => {
-                    return (
-                        <button key={index} onClick={() => {
-                            i18next.changeLanguage(res.code);
-                            // setcurrentLanguageCode(res.code)
-                        }}>
-                            {res.name}
-                        </button>)
-                })
-            } */}
         </>
     )
 }

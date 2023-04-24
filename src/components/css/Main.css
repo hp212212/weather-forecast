@@ -5,4 +5,5 @@
     background: var(--poster);
     margin: 0 auto;
     margin-top: 1rem;
+    border-radius: 5px;
 }

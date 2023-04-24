@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next'
 import { BiDownArrowAlt, BiUpArrowAlt, BiWind } from 'react-icons/bi'
 import { FaCloud, FaTemperatureHigh } from 'react-icons/fa'
 import { WiHumidity } from 'react-icons/wi'
-import '../css/TempItem.css'
 import { Coordinates } from './Context'
+import '../css/TempItem.css'
 
 export default function TempItem(Props) {
   const { t } = useTranslation()

@@ -1,5 +1,4 @@
-import React, {  useContext, useEffect, useState } from 'react'
-// import { useSelector } from 'react-redux'
+import React, { useContext, useEffect, useState } from 'react'
 import { Coordinates } from './Context'
 import { BiDownArrowAlt, BiUpArrowAlt, BiWind } from 'react-icons/bi'
 import { FaTemperatureHigh, FaCloud, FaCompressArrowsAlt } from 'react-icons/fa'
@@ -41,9 +40,7 @@ export default function TodayTemp() {
                     setbackgroundClass('between15to35')
                 }
             }
-            // timeConverter(data.dt)
             setDateFormat(timeConverter(data.dt))
-            // .toLocaleDateString() or.toLocaleTimeString())
         }
         catch (err) {
             console.log(err)
@@ -57,8 +54,6 @@ export default function TodayTemp() {
             if (CF === 'F') {
                 setMainData(data)
             }
-            // timeConverter(data.dt)
-            // .toLocaleDateString() or.toLocaleTimeString())
         }
         catch (err) {
             console.log(err)
@@ -113,10 +108,6 @@ export default function TodayTemp() {
         var month = months[a.getMonth()];
         var date = a.getDate();
         var day = a.getDay();
-        // var hour = a.getHours();
-        // var min = a.getMinutes();
-        // var sec = a.getSeconds();
-        // var time = date + ' ' + month + ' ' + year + ' ; ' + hour + ':' + min + ':' + sec;
         var time = Days[day] + ' ' + date + ' ' + month + ' ' + year + ' | ' + a.toLocaleTimeString();
         return time;
     }
@@ -137,27 +128,8 @@ export default function TodayTemp() {
         if (Latitude !== '') {
             GetWeather()
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [Latitude])
-
-    // useCallback(
-    //     (DateCode) => {
-    //         var a = new Date(DateCode * 1000);
-    //         var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    //         var Days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    //         var year = a.getFullYear();
-    //         var month = months[a.getMonth()];
-    //         var date = a.getDate();
-    //         var day = a.getDay();
-    //         // var hour = a.getHours();
-    //         // var min = a.getMinutes();
-    //         // var sec = a.getSeconds();
-    //         // var time = date + ' ' + month + ' ' + year + ' ; ' + hour + ':' + min + ':' + sec;
-    //         var time = Days[day] + ' ' + date + ' ' + month + ' ' + year + ' ; ' + a.toLocaleTimeString();
-    //         return time;
-    //     },
-    //     [DateCode],
-    // )
 
 
 
@@ -167,7 +139,6 @@ export default function TodayTemp() {
                 <div className='TempMain'>
                     <p>{
                         !Loading ? DateFormat : '--'}</p>
-                    {/* <p>{DateFormat}</p> */}
                     <h1>{CityName}</h1>
                     <div className='TempMain-Container'>
                         <div className='TempMain-Container-Left'>
@@ -211,29 +182,6 @@ export default function TodayTemp() {
 
                 </div>
             </div>
-
-
-            {/* {
-                !Loading ?
-                    (
-                        <><div className='mainContainer' style={{ height: '141px' }}>
-                            <TempItem data={ForecastData[0]} TempChange={TempChange} />
-                        </div>
-                            <div className='mainContainer' style={{ height: '141px' }}>
-                                <TempItem data={ForecastData[1]} TempChange={TempChange} />
-                            </div>
-                            <div className='mainContainer' style={{ height: '141px' }}>
-                                <TempItem data={ForecastData[2]} TempChange={TempChange} />
-                            </div>
-                            <div className='mainContainer' style={{ height: '141px' }}>
-                                <TempItem data={ForecastData[3]} TempChange={TempChange} />
-                            </div>
-                            <div className='mainContainer' style={{ height: '141px' }}>
-                                <TempItem data={ForecastData[4]} TempChange={TempChange} />
-                            </div>
-                        </>)
-                    : null
-            } */}
 
             <div className='mainContainer' style={{ height: '141px' }}>
                 {

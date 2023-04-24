@@ -11,8 +11,8 @@
 }
 
 .i18Main__header .i18Main-icon {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     color: var(--textcolor);
     cursor: pointer;
     float: right;
@@ -20,14 +20,13 @@
 
 .i18Main__header ul {
     position: absolute;
-    top: 25px;
+    top: 30px;
     right: 5px;
     list-style-type: none;
     padding: 0;
     margin: 0;
     width: 100px;
     z-index: 100;
-    /* transform: scaleY(0); */
 }
 
 .i18Main__header ul li {
