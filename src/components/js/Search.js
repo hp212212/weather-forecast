@@ -76,7 +76,7 @@ export default function Search() {
                         }
                     </ul>
                 </div>
-                <NavLink to={`https://www.openstreetmap.org/#map=12/${Latitude}/${Longitude}`} target="_blank">
+                <NavLink to={`https://www.openstreetmap.org/#map=12/${Latitude}/${Longitude}`} target="_blank" aria-label='Hitesh'>
                     <GoLocation className='LocationIcon' />
                 </NavLink>
             </div>
