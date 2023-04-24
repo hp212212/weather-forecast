@@ -20,7 +20,7 @@ export default function TempItem(Props) {
         <h1>{`${weekday[new Date(data.dt_txt).getDay()]} ${t('Outlook')} : ${dayjs(data.dt_txt).format('DD, MMM')}`}</h1>
         <div className='Temp_Item-Container'>
           <div className='Temp_Item-left-item1'>
-            <img alt="icon" src={`https://openweathermap.org/img/w/${data.weather[0].icon}.png`} width="60" height="60" />
+            <img alt="icon" src={`https://openweathermap.org/img/w/${data.weather[0].icon}.png`} width="50" height="50" />
             <p>{data.weather[0].description}</p>
           </div>
           <div className='Temp_Item-left-item2'>

@@ -160,7 +160,11 @@ export default function TodayTemp() {
                         </div>
                         <div className='TempMain-Container-Right'>
                             <p>{!Loading ? MainData.weather[0].main : '--'}</p>
-                            <img alt="icon" src={`https://openweathermap.org/img/w/${!Loading ? MainData.weather[0].icon : '--'}.png`} width="60" height="60" />
+                            {/* <img alt="icon" src={`https://openweathermap.org/img/w/${!Loading ? MainData.weather[0].icon : '--'}.png`} width="60" height="60" /> */}
+                            {
+                                !Loading ? <img alt="icon" src={`https://openweathermap.org/img/w/${MainData.weather[0].icon}.png`} width="50" height="50" /> : null
+                            }
+
                             <div className='Detail-item'>
                                 <FaCloud className='Detail-icon' />
                                 <p>{`${t('Clouds')} ${!Loading ? MainData.clouds.all : '--'}`} %</p>
