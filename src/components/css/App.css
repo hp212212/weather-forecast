@@ -1,4 +1,4 @@
-.LoadingMain{
+.LoadingMain {
     position: fixed;
     top: 0;
     left: 0;
@@ -7,7 +7,8 @@
     background-color: #fff;
     opacity: 0.5;
 }
-.LoadingMain h1{
+
+.LoadingMain h1 {
     margin: auto auto;
     width: 100px;
     height: 100px;
@@ -41,8 +42,9 @@ body {
     background: var(--background);
     width: 100vw;
     /* max-width: 1200px; */
-    /* height: 100vh; */
+    height: 100vh;
     padding-bottom: 2rem;
+    overflow: scroll;
 }
 
 .above35 {
@@ -52,8 +54,9 @@ body {
     background: var(--background);
     /* max-width: 1200px; */
     width: 100vw;
-    /* height: 100vh; */
+    height: 100vh;
     padding-bottom: 2rem;
+    overflow: scroll;
 }
 
 .between15to35 {
@@ -63,8 +66,9 @@ body {
     background: var(--background);
     /* max-width: 1200px; */
     width: 100vw;
-    /* height: 100vh; */
+    height: 100vh;
     padding-bottom: 2rem;
+    overflow: scroll;
 }
 
 .nolocation {
@@ -74,8 +78,9 @@ body {
     background: var(--background);
     /* max-width: 1200px; */
     width: 100vw;
-    /* height: 100vh; */
+    height: 100vh;
     padding-bottom: 2rem;
+    overflow: scroll;
 }
 
 .postar {
