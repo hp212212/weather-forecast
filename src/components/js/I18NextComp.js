@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import Cookies from 'js-cookie';
@@ -8,6 +8,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import HttpApi from 'i18next-http-backend';
 import { MdLanguage } from 'react-icons/md'
 import '../css/i18Next.css'
+import { Coordinates } from './Context';
 
 i18n
     .use(initReactI18next) // passes i18n down to react-i18next
@@ -53,11 +54,13 @@ export default function I18NextComp() {
     const [close, setclose] = useState(true)
     const currentLanguageCode = Cookies.get('i18next') || 'en'
     const { t } = useTranslation();
+    const { setLangCode } = useContext(Coordinates)
     // const releaseDate = new Date('2020-03-07');
     // const timeDifference = new Date() - releaseDate;
     // const number_of_days = Math.floor(timeDifference / (1000 * 60 * 60 * 24))
 
     const SelectLng = (code) => {
+        setLangCode(code)
         i18next.changeLanguage(code)
         setclose(true)
     }
@@ -67,7 +70,7 @@ export default function I18NextComp() {
         currentLanguageCode === 'ar' ?
             (document.body.dir = 'rtl') : (document.body.dir = 'ltr');
         document.title = t('Title')
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentLanguageCode])
     return (
         <>

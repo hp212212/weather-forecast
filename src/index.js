@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import './components/css/App.css'
 // import i18n from "i18next";
 // import { initReactI18next } from "react-i18next";
 // import LanguageDetector from 'i18next-browser-languagedetector';
@@ -43,7 +44,9 @@ import reportWebVitals from './reportWebVitals';
 
 
 const lodingMarkup = (
-  <h1>Loading...................</h1>
+  <div className='LoadingMain'>
+    <h1>Loading.......</h1>
+  </div>
 )
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

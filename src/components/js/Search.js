@@ -16,10 +16,10 @@ export default function Search() {
     const [Data, setData] = useState([])
     const [placeholder, setPlaceholder] = useState()
     let [ScaleUl, setScaleUl] = useState('scaleY(1)')
-    const { Latitude, setLatitude, Longitude, setLongitude, setCityName } = useContext(Coordinates)
+    const { Latitude, setLatitude, Longitude, setLongitude, setCityName, LangCode } = useContext(Coordinates)
     const Search = async () => {
         try {
-            const response = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${InputCity.length > 2 ? InputCity : ''}&key=b257c0dae6134b9683a9d59a1a1bcb8c&limit=7&language=en&debounce=250`);
+            const response = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${InputCity.length > 2 ? InputCity : ''}&language=${LangCode}&key=b257c0dae6134b9683a9d59a1a1bcb8c&limit=7&language=en&debounce=250`);
             const data = await response.json();
             setData(data.results)
         }
@@ -58,7 +58,7 @@ export default function Search() {
             setData([])
             setScaleUl('scaleY(0)')
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [InputCity])
     return (
         <>

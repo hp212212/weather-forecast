@@ -2,6 +2,8 @@
     position: fixed;
     top: 10px;
     right: 10px;
+    width: 100%;
+    z-index: 10;
 }
 
 .i18Main__header {
@@ -13,19 +15,22 @@
     height: 20px;
     color: var(--textcolor);
     cursor: pointer;
+    float: right;
 }
 
 .i18Main__header ul {
     position: absolute;
-    top: 100%;
-    right: 10%;
+    top: 25px;
+    right: 5px;
     list-style-type: none;
     padding: 0;
     margin: 0;
+    width: 100px;
+    z-index: 100;
     /* transform: scaleY(0); */
 }
 
-.i18Main__header ul li{
+.i18Main__header ul li {
     display: inline-block;
     padding-bottom: 0.3rem;
     margin: 0;
@@ -33,4 +38,12 @@
     width: 100%;
     text-align: right;
     cursor: pointer;
+    background: blueviolet;
+    margin-bottom: 5px;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 0.3rem 0.7rem;
+    height: 27px;
+    border-radius: 0.3rem;
 }

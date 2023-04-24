@@ -19,6 +19,7 @@ function App() {
   const [Latitude, setLatitude] = useState('')
   const [CityName, setCityName] = useState('--')
   const [CF, setCF] = useState('C')
+  const [LangCode, setLangCode] = useState('en')
   // const [lo, setLo] = useState('')
   // const [Live, setLive] = useState('')
   // const [LiveText, setLiveText] = useState('')
@@ -64,19 +65,19 @@ function App() {
             </button>)
         })
       } */}
-      <I18NextComp />
-      <div className={backgroundClass}>
-        <h1 className='TitleName'>{t('Header')}</h1>
-        {/* <Provider store={store}> */}
-        {/* <BackgroungChange.Provider value={{ backgroundClass, setbackgroundClass }}> */}
-        <Coordinates.Provider value={{ NoLocation, setNoLocation, backgroundClass, setbackgroundClass, Longitude, setLongitude, Latitude, setLatitude, CityName, setCityName, CF, setCF }}>
+      <Coordinates.Provider value={{ LangCode, setLangCode, NoLocation, setNoLocation, backgroundClass, setbackgroundClass, Longitude, setLongitude, Latitude, setLatitude, CityName, setCityName, CF, setCF }}>
+        <I18NextComp />
+        <div className={backgroundClass}>
+          <h1 className='TitleName'>{t('Header')}</h1>
+          {/* <Provider store={store}> */}
+          {/* <BackgroungChange.Provider value={{ backgroundClass, setbackgroundClass }}> */}
           <Routes>
             <Route path="/" element={<Main />} />
           </Routes>
-        </Coordinates.Provider>
-        {/* </BackgroungChange.Provider> */}
-        {/* </Provider> */}
-      </div>
+          {/* </BackgroungChange.Provider> */}
+          {/* </Provider> */}
+        </div>
+      </Coordinates.Provider>
       {/* <Demo /> */}
 
     </>
