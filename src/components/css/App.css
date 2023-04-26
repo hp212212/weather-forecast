@@ -44,7 +44,7 @@ body {
     /* max-width: 1200px; */
     height: 100vh;
     padding-bottom: 2rem;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .above35 {
@@ -56,7 +56,7 @@ body {
     width: 100vw;
     height: 100vh;
     padding-bottom: 2rem;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .between15to35 {
@@ -68,7 +68,7 @@ body {
     width: 100vw;
     height: 100vh;
     padding-bottom: 2rem;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .nolocation {
@@ -80,7 +80,7 @@ body {
     width: 100vw;
     height: 100vh;
     padding-bottom: 2rem;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .postar {
