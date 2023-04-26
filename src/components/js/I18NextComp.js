@@ -18,7 +18,7 @@ i18n
         supportedLngs: ['en', 'ar', 'fr', 'gu'],
         fallbackLng: "en",
         detection: {
-            order: ['path', 'cookie', 'htmlTag', 'localStorage', 'subdomain'],
+            order: ['cookie', 'path', 'htmlTag', 'localStorage', 'subdomain'],
             caches: ['localStorage', 'cookie'],
         },
         backend: {
