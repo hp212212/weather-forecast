@@ -37,7 +37,7 @@ body {
 
 .below15 {
     --background: linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(183, 191, 236, 1) 0%, rgba(106, 116, 255, 1) 100%);
-    --poster: #2430dd;
+    --poster: #03045e;
     --textcolor: #fff;
     background: var(--background);
     width: 100vw;
@@ -45,11 +45,12 @@ body {
     height: 100vh;
     padding-bottom: 2rem;
     overflow-y: scroll;
+    transition: ease 0.5s;
 }
 
 .above35 {
     --background: linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(183, 191, 236, 1) 0%, rgba(255, 106, 106, 1) 100%);
-    --poster: #fb1e1e;
+    --poster: #830514;
     --textcolor: #fff;
     background: var(--background);
     /* max-width: 1200px; */
@@ -57,11 +58,12 @@ body {
     height: 100vh;
     padding-bottom: 2rem;
     overflow-y: scroll;
+    transition: ease 0.5s;
 }
 
 .between15to35 {
     --background: linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(183, 191, 236, 1) 0%, rgba(255, 229, 75, 1) 100%);
-    --poster: #ffc41f;
+    --poster: #f28901;
     --textcolor: #000;
     background: var(--background);
     /* max-width: 1200px; */
@@ -69,11 +71,12 @@ body {
     height: 100vh;
     padding-bottom: 2rem;
     overflow-y: scroll;
+    transition: ease 0.5s;
 }
 
 .nolocation {
     --background: linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(183, 191, 236, 1) 0%, rgba(135, 135, 135, 1) 100%);
-    --poster: #676767;
+    --poster: #363f41;
     --textcolor: #fff;
     background: var(--background);
     /* max-width: 1200px; */
@@ -81,6 +84,7 @@ body {
     height: 100vh;
     padding-bottom: 2rem;
     overflow-y: scroll;
+    transition: ease 0.5s;
 }
 
 .postar {
@@ -95,14 +99,20 @@ body {
     /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
 }
 
-.TitleName {
+.TitleName,
+.TitleCreated {
     margin: 0;
     font-size: 2rem;
     font-weight: 700;
     text-transform: capitalize;
     width: 90vw;
     margin: 0 auto;
-    padding: 2rem 0;
+    padding: 2rem 0 0;
     color: var(--textcolor);
     text-align: center;
+}
+.TitleCreated {
+    color: var(--poster);
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
 }

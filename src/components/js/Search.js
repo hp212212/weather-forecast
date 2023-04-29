@@ -38,24 +38,26 @@ export default function Search() {
                     prevIndex === Data.length - 1 ? 0 : prevIndex + 1
                 );
                 break;
-            case 'Tab' || 'Enter':
-                setPlaceholder(Data[0].formatted)
-                setCityName(Data[0].formatted)
-                setLongitude(Data[0].geometry.lng)
-                setLatitude(Data[0].geometry.lat)
-                setInputCity('')
+            case 'Tab':
+                if (Data[0]) {
+                    setPlaceholder(Data[SelectedIndex].formatted)
+                    setCityName(Data[SelectedIndex].formatted)
+                    setLongitude(Data[SelectedIndex].geometry.lng)
+                    setLatitude(Data[SelectedIndex].geometry.lat)
+                    setInputCity('')
+                }
+                break;
+            case 'Enter':
+                if (Data[0]) {
+                    setPlaceholder(Data[SelectedIndex].formatted)
+                    setCityName(Data[SelectedIndex].formatted)
+                    setLongitude(Data[SelectedIndex].geometry.lng)
+                    setLatitude(Data[SelectedIndex].geometry.lat)
+                    setInputCity('')
+                }
                 break;
             default:
                 break;
-        }
-
-
-        if (e.key === 'Tab' || e.key === 'Enter') {
-            setPlaceholder(Data[SelectedIndex].formatted)
-            setCityName(Data[SelectedIndex].formatted)
-            setLongitude(Data[SelectedIndex].geometry.lng)
-            setLatitude(Data[SelectedIndex].geometry.lat)
-            setInputCity('')
         }
     }
 

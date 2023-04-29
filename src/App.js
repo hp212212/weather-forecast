@@ -23,6 +23,7 @@ function App() {
         <I18NextComp />
         <div className={backgroundClass}>
           <h1 className='TitleName'>{t('Header')}</h1>
+          <h1 className='TitleCreated'>Created by @Hitesh Patel</h1>
           <Routes>
             <Route path="/" element={<Main />} />
           </Routes>
