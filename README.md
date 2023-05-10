@@ -1,10 +1,14 @@
 # Image World
-## Hosted Live: https://search-images-by-scroll-hitesh.netlify.app/
+## Hosted Live: https://weather-forecast-hit.netlify.app/
 
-Developed with: React, HTML, CSS, APIs
+Developed with: React, HTML, CSS, APIs, Geolocation
 
-*📌 An image search engine that will help to find any photo, simply by writing a keyword in the search bar. On SCROLLING, can enjoy a huge collection of images based on "UNSPLASH API".*
+*📌 Very First Time it ask to Know The Client's LOCATION.*
+*On BLOCK the Location...*
 
+<img src="Weather_Block.png" >
+
+*On ALLOW the Location...*
 
 <img src="Image_World_S.png" >
 
