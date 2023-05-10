@@ -13,7 +13,7 @@ Developed with: React, HTML, CSS, APIs, Geolocation
 
 <img src="Weather_Allow.png" >
 
-*📌 By clicking on the image, it will open and can download in super HD quality.* 
+*📌 in Search Box, can enjoy Seven suggestions on third letter.* 
 
 <img src="Image_World_S2.png" >
 

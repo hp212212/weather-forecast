@@ -13,7 +13,7 @@ export default function Search() {
     const [SelectedIndex, setSelectedIndex] = useState(0)
     const [placeholder, setPlaceholder] = useState()
     let [ScaleUl, setScaleUl] = useState('scaleY(1)')
-    const { Latitude, setLatitude, Longitude, setLongitude, setCityName, LangCode } = useContext(Coordinates)
+    const { Latitude, setLatitude, Longitude, setLongitude, setCityName, LangCode, setNoLocation } = useContext(Coordinates)
     const Search = async () => {
         try {
             setSelectedIndex(0)
@@ -40,6 +40,7 @@ export default function Search() {
                 break;
             case 'Tab':
                 if (Data[0]) {
+                    setNoLocation(false)
                     setPlaceholder(Data[SelectedIndex].formatted)
                     setCityName(Data[SelectedIndex].formatted)
                     setLongitude(Data[SelectedIndex].geometry.lng)
@@ -49,6 +50,7 @@ export default function Search() {
                 break;
             case 'Enter':
                 if (Data[0]) {
+                    setNoLocation(false)
                     setPlaceholder(Data[SelectedIndex].formatted)
                     setCityName(Data[SelectedIndex].formatted)
                     setLongitude(Data[SelectedIndex].geometry.lng)
@@ -67,6 +69,7 @@ export default function Search() {
 
 
     const Display = (item) => {
+        setNoLocation(false)
         setPlaceholder(item.formatted)
         setCityName(item.formatted)
         setLongitude(item.geometry.lng)
