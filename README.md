@@ -17,7 +17,14 @@ Developed with: React, HTML, CSS, APIs, Geolocation
 
 <img src="Weather_Suggestions.png" >
 
-*Note : All images are depend on "UNSPLASH API".* 
+*📌 Above 35° C -- RED Theme* 
+*📌 Between 15° C to 35° C -- YELLOW Theme* 
+*📌 Bellow 15° C -- BLUE Theme* 
+
+
+*📌 Can aware about NEXT FIVE DAYS WEATHER* 
+
+<img src="Weather_Five_Days.png" >
 
 
 # Getting Started with Create React App
