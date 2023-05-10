@@ -26,7 +26,7 @@ Developed with: React, HTML, CSS, APIs, Geolocation
 
 <img src="Weather_Five_Days.png" >
 
-*📌 Clicking Anywhere Temperature can change Celsius to Fahrenheit and Fahrenheit to Celsius* 
+*📌 Clicking Anywhere on Temperature, can change Celsius to Fahrenheit and Fahrenheit to Celsius* 
 
 <img src="Weather_Temp_Change.png" >
 
