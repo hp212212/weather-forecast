@@ -11,7 +11,7 @@ Developed with: React, HTML, CSS, APIs, Geolocation
 
 *On ALLOW the Location...*
 
-<img src="Image_World_S.png" >
+<img src="Weather_Allow.png" >
 
 *📌 By clicking on the image, it will open and can download in super HD quality.* 
 
