@@ -15,7 +15,7 @@ Developed with: React, HTML, CSS, APIs, Geolocation
 
 *📌 in Search Box, can enjoy Seven suggestions on third letter.* 
 
-<img src="Image_World_S2.png" >
+<img src="Weather_Suggestions.png" >
 
 *Note : All images are depend on "UNSPLASH API".* 
 
